@@ -1,0 +1,54 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fairride-api",
+  "main": "src/index.ts",
+  // Pinned to the newest date the locally-installed workerd understands, so
+  // `wrangler dev` and the Vitest workers pool both start. Bump deliberately
+  // (alongside a wrangler/miniflare upgrade) and run the tests after advancing.
+  "compatibility_date": "2026-08-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+
+  // One Durable Object per ride: serialises every negotiation intent for that
+  // ride and fans the result out to connected sockets. SQLite-backed.
+  "durable_objects": {
+    "bindings": [{ "name": "RIDE_ROOM", "class_name": "RideRoom" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RideRoom"] }],
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "fairride",
+      // Real id for the Polemoroke@gmail.com account (region WEUR).
+      "database_id": "4b98c2bb-8971-4220-8a2d-205f100b3478",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "r2_buckets": [
+    {
+      // Profile photos, licence/insurance documents, PDF receipts.
+      "binding": "FILES",
+      "bucket_name": "fairride-files"
+    }
+  ],
+
+  "vars": {
+    // Production: `/v1/auth/dev/token` fails closed and OTP codes are never
+    // echoed back in responses. Login is handled by Firebase Authentication
+    // (POST /v1/auth/firebase), so the built-in SMS stub is never used.
+    "ENVIRONMENT": "production",
+    // Public identifier - it appears in the committed google-services.json, so
+    // it is a var, not a secret. ID-token verification needs it.
+    "FIREBASE_PROJECT_ID": "myrewardlink-f73e4"
+  }
+
+  // Secrets are NOT stored here. Set them with:
+  //   wrangler secret put JWT_SECRET
+  //   wrangler secret put STRIPE_SECRET_KEY
+  // For local dev, put them in a gitignored `.dev.vars` file.
+}

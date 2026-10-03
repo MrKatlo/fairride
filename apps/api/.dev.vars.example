@@ -1,0 +1,7 @@
+# Copy to .dev.vars (same directory) for local development. `wrangler dev` reads
+# it automatically; it is never deployed, and .dev.vars is gitignored.
+#
+# Use a long, random value. Production sets the same names with:
+#   wrangler secret put JWT_SECRET
+JWT_SECRET=dev-only-change-me-please-0123456789abcdef
+ENVIRONMENT=development

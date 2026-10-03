@@ -1,0 +1,29 @@
+{
+  "name": "fairride",
+  "version": "0.0.0",
+  "private": true,
+  "description": "FairRide - a negotiation-based ride-sharing platform (React Native + Cloudflare)",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "api:dev": "npm run dev -w @fairride/api",
+    "api:deploy": "npm run deploy -w @fairride/api",
+    "db:migrate:local": "npm run db:migrate:local -w @fairride/api",
+    "db:migrate:remote": "npm run db:migrate:remote -w @fairride/api",
+    "mobile": "npm run start -w @fairride/mobile",
+    "admin:dev": "npm run dev -w @fairride/admin",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,json,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3"
+  }
+}

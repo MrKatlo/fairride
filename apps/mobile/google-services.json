@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "216625294740",
+    "project_id": "myrewardlink-f73e4",
+    "storage_bucket": "myrewardlink-f73e4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216625294740:android:d73f2dc0ef699e33263381",
+        "android_client_info": {
+          "package_name": "com.myrewardlink.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_J--1XGWdXTy0j6ftRX55ChzZt9R6vlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216625294740:android:34a76855eb1a74cc263381",
+        "android_client_info": {
+          "package_name": "com.polecreates.fairride"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_J--1XGWdXTy0j6ftRX55ChzZt9R6vlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

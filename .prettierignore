@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+out
+.next
+.expo
+.wrangler
+coverage
+package-lock.json
+*.md
